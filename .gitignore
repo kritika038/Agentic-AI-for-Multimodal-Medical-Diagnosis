@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+*.so
+.DS_Store
+
+venv/
+.venv/
+env/
+
+.streamlit/secrets.toml
+
+chest_xray/
+dataset/
+archive (2).zip
+docs_download.zip
+
+database/patient_history.json
+
+*.log
