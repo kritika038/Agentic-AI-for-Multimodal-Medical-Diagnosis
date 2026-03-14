@@ -1,0 +1,361 @@
+:root {
+  --bg: #06111e;
+  --panel: rgba(9, 22, 41, 0.86);
+  --panel-strong: rgba(10, 18, 31, 0.94);
+  --text: #eef6ff;
+  --muted: #b6c6da;
+  --line: rgba(125, 211, 252, 0.14);
+  --accent: #0ea5a4;
+  --accent-2: #2563eb;
+  --accent-soft: rgba(45, 212, 191, 0.14);
+  --shadow: 0 22px 60px rgba(2, 6, 23, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top right, rgba(37, 99, 235, 0.18), transparent 22%),
+    radial-gradient(circle at left center, rgba(13, 148, 136, 0.16), transparent 24%),
+    linear-gradient(180deg, #05101d 0%, #0a1728 54%, #0f1c2c 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-shell {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 44px;
+}
+
+.topbar,
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.topbar {
+  padding: 16px 0 10px;
+}
+
+.brand {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.nav-cta {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #f8fafc;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 28px;
+  padding: 42px 0 30px;
+}
+
+.hero-copy,
+.hero-panel,
+.feature-card,
+.step-card,
+.faq-item,
+.preview-card,
+.profile-card {
+  animation: rise 0.7s ease both;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: #7dd3fc;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.68rem;
+  font-weight: 700;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+.hero-copy h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: 1.08;
+  max-width: 13ch;
+}
+
+.hero-text,
+.hero-note,
+.feature-card p,
+.step-card p,
+.faq-item p,
+.profile-copy p,
+.preview-card p,
+.section-heading p,
+.footer {
+  font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+.hero-text {
+  max-width: 58ch;
+  margin: 18px 0 0;
+  font-size: 0.98rem;
+  line-height: 1.62;
+  color: var(--muted);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 0.93rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.button:hover,
+.nav-cta:hover {
+  transform: translateY(-2px);
+}
+
+.primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #f8fafc;
+  box-shadow: var(--shadow);
+}
+
+.secondary {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+}
+
+.hero-note {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.hero-panel {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.signal-card,
+.feature-card,
+.step-card,
+.faq-item,
+.preview-card,
+.profile-card {
+  padding: 24px;
+  border-radius: 24px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.signal-label,
+.preview-tag {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.68rem;
+  color: #7dd3fc;
+}
+
+.signal-card strong {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.section {
+  padding: 48px 0 12px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2vw, 1.8rem);
+  max-width: 22ch;
+}
+
+.feature-grid,
+.step-list,
+.faq-list,
+.preview-grid {
+  display: grid;
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.feature-grid,
+.step-list,
+.preview-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.feature-card h3,
+.step-card h3,
+.faq-item h3,
+.preview-card h3,
+.profile-copy h3 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+}
+
+.feature-card p,
+.step-card p,
+.faq-item p,
+.preview-card p,
+.profile-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.58;
+}
+
+.profile-card {
+  display: grid;
+  grid-template-columns: 132px 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+.profile-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #f8fafc;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  box-shadow: var(--shadow);
+}
+
+.preview-tag {
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+}
+
+.step-number {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(14, 165, 164, 0.26), rgba(37, 99, 235, 0.28));
+  color: #ecfeff;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.footer {
+  margin-top: 52px;
+  padding: 22px 0 8px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 18px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .feature-grid,
+  .step-list,
+  .preview-grid,
+  .profile-card {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar,
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(100% - 24px, 1120px);
+  }
+
+  .hero-copy h1,
+  .section-heading h2 {
+    max-width: none;
+  }
+
+  .hero-actions,
+  .footer-links {
+    width: 100%;
+  }
+
+  .button,
+  .nav-cta {
+    width: 100%;
+  }
+}

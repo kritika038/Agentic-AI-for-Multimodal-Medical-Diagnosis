@@ -1,122 +1,119 @@
-# Agentic AI-Based Multimodal Healthcare Diagnostic System
+# Agentic AI for Multimodal Medical Diagnosis
 
-This project is structured as a research-oriented agentic healthcare pipeline. Instead of one monolithic model, separate agents handle different subtasks and pass evidence to an orchestrator that produces the final triage decision.
+This project presents a healthcare AI workflow that combines chest X-ray analysis, diabetes risk estimation, agent-based orchestration, explainability, and triage-oriented reporting in one Streamlit application.
 
-## Current Agent Roles
+## Links
 
-- `IntakeAgent`: validates image quality and clinical completeness.
-- `DiagnosisAgent`: screens chest X-rays for pneumonia.
-- `LocalizationAgent`: estimates the dominant suspicious lung region.
-- `SeverityAgent`: scores opacity burden and maps it to a severity level.
-- `RiskAgent`: predicts diabetes risk from tabular clinical variables.
-- `FusionAgent`: combines imaging and clinical evidence into a multimodal severity score.
-- `UncertaintyAgent`: estimates confidence breakdown and routes ambiguous cases for review.
-- `DoctorAgent`: converts multimodal evidence into triage guidance.
-- `ReportAgent`: produces a structured research-style report.
-- `HealthcareOrchestrator`: coordinates all agents and stores the evidence chain.
+- GitHub Repository: `https://github.com/kritika038/Agentic-AI-for-Multimodal-Medical-Diagnosis`
+- Live App: `https://agentic-ai-for-multimodal-medical-diagnosis-gph5znuag4uuswq6su.streamlit.app/`
+- Website Source: `docs/index.html`
 
-## Multimodal Design
+If the Streamlit app shows a sleep screen, wake it up and wait a short moment for the demo to load.
 
-The system combines:
+## What This Project Does
 
-- Imaging modality: chest X-ray classification and localization.
-- Tabular modality: diabetes-risk estimation from structured clinical values.
-- Symbolic reasoning layer: warnings, evidence aggregation, and triage rules.
+- Analyzes chest X-ray input for pneumonia-oriented screening
+- Estimates diabetes risk from structured clinical measurements
+- Uses multiple specialized agents for intake, diagnosis, localization, severity, fusion, uncertainty, doctor guidance, and reporting
+- Produces a multimodal result with triage-focused guidance and explainability context
 
-This is a stronger research foundation because it demonstrates:
+## Core Architecture
 
-- modular agent specialization,
-- multimodal data fusion,
-- uncertainty-aware escalation,
-- explainability output,
-- triage policy design,
-- auditability through an evidence chain.
+- `app.py`: Streamlit entrypoint and user interface
+- `agents/case_orchestrator.py`: coordinates the full workflow
+- `agents/diagnosis_agent.py`: image-based diagnosis logic
+- `agents/localization_agent.py`: suspicious lung-region localization
+- `agents/severity_agent.py`: severity estimation
+- `agents/risk_agent.py`: diabetes-risk estimation from tabular inputs
+- `agents/fusion_agent.py`: multimodal evidence fusion
+- `agents/uncertainty_agent.py`: uncertainty handling and escalation logic
+- `agents/doctor_agent.py`: triage guidance generation
+- `agents/report_agent.py`: structured report generation
+- `utils/explainability.py`: heatmap and explanation support
+- `models/xray_model.pkl`: X-ray model artifact
+- `models/diabetes_model.pkl`: diabetes-risk model artifact
 
-## Research Assets Added
-
-- [research/experiment_config.py](/Users/kritikabansal/Desktop/Healthcare_MultiTask_AI/research/experiment_config.py): reproducible experiment metadata.
-- [research/evaluate_pipeline.py](/Users/kritikabansal/Desktop/Healthcare_MultiTask_AI/research/evaluate_pipeline.py): pipeline-level evaluation script.
-- [research/ablation_plan.md](/Users/kritikabansal/Desktop/Healthcare_MultiTask_AI/research/ablation_plan.md): ablation roadmap for thesis or paper reporting.
-
-## What Still Makes It Baseline
-
-The project architecture is now closer to a research system, but the underlying predictive models are still classical baselines. For a strong final-year or paper-style result, replace:
-
-- `models/xray_model.pkl` with a pretrained chest X-ray backbone plus calibration,
-- `LocalizationAgent` with CAM or segmentation-based localization,
-- `models/diabetes_model.pkl` with a tuned calibrated ensemble,
-- heuristic fusion with learned multimodal fusion.
-
-## Recommended Research Upgrades
-
-To make this stronger for publication-style evaluation or a final-year project, replace the baseline models with stronger task-specific models:
-
-- X-ray diagnosis: DenseNet121, EfficientNet, ConvNeXt, or a vision transformer fine-tuned on chest radiographs.
-- Localization: U-Net, nnU-Net, YOLOv8-seg, or weakly supervised CAM/Grad-CAM localization.
-- Severity scoring: ordinal regression or a multi-label opacity scoring model.
-- Tabular risk modeling: XGBoost, CatBoost, TabNet, or a calibrated ensemble.
-- Report generation: LLM-backed summarizer constrained by structured evidence.
-- Orchestration: uncertainty-aware routing, conflict detection, and human-in-the-loop escalation.
-
-## Suggested Research Questions
-
-- Does multimodal fusion improve triage quality over image-only diagnosis?
-- How much does localization evidence improve clinician trust?
-- Can uncertainty-aware orchestration reduce false positive escalations?
-- Which agent contributes most to final triage quality?
-
-## How To Run
-
-Use Streamlit:
+## Local Run
 
 ```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Or with the project virtualenv:
+Then open:
 
-```bash
-./venv/bin/streamlit run app.py
+```text
+http://localhost:8501
 ```
 
-Run evaluation:
+## Streamlit Deployment
 
-```bash
-./venv/bin/python research/evaluate_pipeline.py --dataset-root chest_xray/val --limit-per-class 8
+This repository is ready to deploy on Streamlit Community Cloud.
+
+Settings to use:
+
+- Repository: `kritika038/Agentic-AI-for-Multimodal-Medical-Diagnosis`
+- Branch: `main`
+- Main file path: `app.py`
+- Python version: use the version in `runtime.txt`
+
+## GitHub Pages Landing Page
+
+This repo now includes a static landing page in `docs/`.
+
+If you want to publish it with GitHub Pages:
+
+1. Open the repository on GitHub.
+2. Go to `Settings -> Pages`.
+3. Under `Build and deployment`, choose:
+   - `Source`: `Deploy from a branch`
+   - `Branch`: `main`
+   - `Folder`: `/docs`
+4. Save.
+
+The expected site URL will be:
+
+```text
+https://kritika038.github.io/Agentic-AI-for-Multimodal-Medical-Diagnosis/
 ```
 
-## GitHub And Streamlit Deployment
+## Important Note About Privacy
 
-This project can be deployed on Streamlit Community Cloud using the GitHub repo as the source.
+If you want both:
 
-Required files already expected by deployment:
+- a private repository
+- and a GitHub Pages site
 
-- `app.py` as the Streamlit entrypoint
-- `requirements.txt` for Python packages
-- `runtime.txt` for the Python version
-- `.streamlit/config.toml` for app theme/server defaults
+that depends on your GitHub plan.
 
-Recommended deployment flow:
+According to GitHub Docs, GitHub Pages works:
 
-```bash
-git init
-git add .
-git commit -m "Initial Streamlit deployment setup"
-git branch -M main
-git remote add origin <your-github-repo-url>
-git push -u origin main
-```
+- on public repositories with GitHub Free
+- on public and private repositories with GitHub Pro, Team, Enterprise Cloud, or Enterprise Server
 
-Then in Streamlit Community Cloud:
+Source:
+- https://docs.github.com/en/pages/getting-started-with-github-pages/using-submodules-with-github-pages
 
-1. Sign in with GitHub.
-2. Click `New app`.
-3. Select your repository and branch `main`.
-4. Set the main file path to `app.py`.
-5. Deploy.
+So if your account is on GitHub Free, you will usually need:
 
-If the app later needs secrets, add them in the Streamlit Cloud app settings instead of committing them to the repository.
+- either a public repo for GitHub Pages
+- or a paid GitHub plan to keep the repo private and still use Pages
 
-## Important Note
+## How To Make The Repo Private
 
-This repository is for education and research prototyping. It is not a medical device and must not be used as a standalone diagnostic system.
+GitHub repo visibility must be changed in GitHub settings:
+
+1. Open the repository on GitHub.
+2. Go to `Settings`.
+3. Scroll to `Danger Zone`.
+4. Click `Change visibility`.
+5. Choose `Make private`.
+
+GitHub Docs:
+- https://docs.github.com/articles/making-a-private-repository-public
+
+## Disclaimer
+
+This project is for education, research, and demonstration only. It is not a medical device and should not be used as a standalone diagnostic system.

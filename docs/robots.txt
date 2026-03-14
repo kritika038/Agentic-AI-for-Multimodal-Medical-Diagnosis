@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kritika038.github.io/Agentic-AI-for-Multimodal-Medical-Diagnosis/sitemap.xml

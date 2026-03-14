@@ -18,8 +18,7 @@ database/patient_history.json
 
 *.log
 
-# Local-only research, training, and documentation assets
-docs/
+# Local-only research and experimentation assets
 research/
 test_*.py
 train_*.py
